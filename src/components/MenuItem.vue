@@ -62,4 +62,11 @@ a:hover {
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 768px) {
+    /* Estilos para dispositivos móviles */
+    .item .icon {
+        font-size: 8px; /* Reduce el tamaño del icono en dispositivos móviles */
+    }
+}
 </style>

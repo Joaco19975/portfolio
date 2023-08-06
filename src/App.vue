@@ -188,6 +188,7 @@ a:hover{
   align-items: center;
   justify-content: center;
   min-height: 100vh; /* Establece una altura mínima igual a la altura de la ventana */
+  padding: 20px; /* Agrega espacio entre los bordes y el contenido */
  /* height: 100vh;  Esto asegura que el contenido esté centrado verticalmente en la pantalla */
 }
 
@@ -201,8 +202,9 @@ a:hover{
 
 /* Estilos para el contenedor "Sobre mi" */
 .about-me {
-  text-align: center; /* Centrar el contenido del contenedor */
-  margin-top: 100px; /* Ajustar el margen superior según tu preferencia */
+ /* text-align: center;  Centrar el contenido del contenedor */
+  text-align: center; /* Alinea el texto a la izquierda en pantallas pequeñas */
+  margin-top: 50px; /* Ajusta el margen superior según tu preferencia */
 }
 
 /* Estilos para los botones de navegación */
@@ -240,6 +242,7 @@ a:hover{
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  
 }
 
 .project-item {
@@ -255,8 +258,8 @@ a:hover{
 
 /* Estilos para el contenedor de habilidades */
 .skills {
-  text-align: center;
-  margin-top: 100px;
+  text-align: center; /* Alinea el texto a la izquierda en pantallas pequeñas */
+  margin-top: 50px; /* Ajusta el margen superior según tu preferencia */
 }
 
 .skills-container {
@@ -285,13 +288,13 @@ a:hover{
 
 .contacts {
   text-align: center; /* Centrar el contenido del contenedor */
-  margin-top: 100px; /* Ajustar el margen superior según tu preferencia */  
+  margin-top: 50px; 
 }
 .contacts a.contact-link {
   color: black;
-  font-size: 50px;
   text-decoration: none;
   margin-right: 30px; /* Ajusta este valor para cambiar la separación entre los íconos */
+  font-size: 30px; /* Reduce el tamaño de fuente en dispositivos móviles */
 }
 
 .contacts a.contact-link:hover {
@@ -301,6 +304,8 @@ a:hover{
 .blinking-brackets {
   font-size: 30px; /* Tamaño de fuente opcional para los corchetes */
   margin-top: 30px !important;
+
+
 }
 
 .opening-bracket,

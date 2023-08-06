@@ -49,6 +49,7 @@ const collapsed = ref(true);
     position: fixed;
     left: 0;
     top: 0;
+    overflow-y: auto; /* Agrega un scroll vertical en caso de contenido largo */
 }
 
 .header {
@@ -61,6 +62,7 @@ const collapsed = ref(true);
     background-color: transparent;
     color: white;
     padding: 10px;
+    font-size: 18px; /* Reduce el tamaño del icono del menú */
 }
 
 .collapsed {
@@ -68,19 +70,19 @@ const collapsed = ref(true);
 }
 
 .expanded {
-    width: 350px;
+    width: 250px; /* Reduce el ancho del menú expandido */
 }
 
 .profile {
     padding: 10px;
     text-align:center;
+    
 }
 
 .profile img {
     border-radius: 50%;
-    min-width: 50px;
-    max-width: 300px;
-    width: 100%;
+    max-width: 100px; /* Reduce el tamaño máximo de la imagen */
+        width: 100%;
 }
 
 .profile-name {
@@ -92,6 +94,16 @@ const collapsed = ref(true);
     list-style:none;
     padding: 0;
     margin: 0;
+}
+
+@media (max-width: 768px) {
+    /* Estilos para dispositivos móviles */
+    .collapsed {
+        width: 20px; /* Reduce el ancho del menú en dispositivos móviles */
+    }
+    .menu-button {
+        font-size: 8px; /* Reduce el tamaño del icono del menú en dispositivos móviles */
+    }
 }
 
 
