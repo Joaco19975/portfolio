@@ -26,12 +26,10 @@ const currentImageIndex = ref([]);
 
 const prevImage = (projectIndex) => {
   currentImageIndex.value[projectIndex] = (currentImageIndex.value[projectIndex] - 1 + projects.value[projectIndex].images.length) % projects.value[projectIndex].images.length;
-  console.log('ANTERIOR');
 };
 
 const nextImage = (projectIndex) => {
   currentImageIndex.value[projectIndex] = (currentImageIndex.value[projectIndex] + 1) % projects.value[projectIndex].images.length;
-  console.log('SIGUIENTE');
 };
 
 
@@ -39,18 +37,23 @@ const projects = ref([]);
 
 const loadProjects = async () => {
   const projectData = [
-  {title: 'Sistema de gestión de cine', 
-  description: "Sistema de gestión de cine para la compra de entradas online del lado del cliente, y la administración del lado del Administrador. (Arreglando errores de seguridad en producción)" , 
-  images:[await import('@/assets/projectsimg/cine.jpg').then((m) => m.default)], 
-  manual:true,  manualLink: (await import('@/assets/manual-usuario/Manual-Usuario-Cine.pdf')).default, url:true ,href:"https://gestor-de-cine-production.up.railway.app/",   githubhref: "https://github.com/Joaco19975/gestor-de-cine",
+  {
+    title: 'Sistema de gestión de cine', 
+    description: "Sistema de gestión de cine para la compra de entradas online del lado del cliente, y la administración del lado del Administrador. (Arreglando errores de seguridad en producción)" , 
+    images:[await import('@/assets/projectsimg/cine.jpg').then((m) => m.default)], 
+    manual:true,  manualLink: (await import('@/assets/manual-usuario/Manual-Usuario-Cine.pdf')).default,
+    url:true ,
+    href:"https://gestor-de-cine-production.up.railway.app/",   
+    githubhref: "https://github.com/Joaco19975/gestor-de-cine",
  },
-  {title: 'Sistema de gestion de hospital', description: "Sistema donde se puede agregar pacientes, medicinas y llevar un registro de qué medicina se le da al paciente, cualquier hospital se puede registrar.", 
-  images:[(await import('@/assets/projectsimg/hospital/principal.jpg')).default,
-      (await import('@/assets/projectsimg/hospital/pacientes.jpg')).default,
-      (await import('@/assets/projectsimg/hospital/medicinas.jpg')).default,
-      (await import('@/assets/projectsimg/hospital/registro.jpg')).default,
-      ],
-      githubhref: "https://github.com/Joaco19975/Registros-medicos-pacientes", 
+  {
+    title: 'Sistema de gestion de hospital', description: "Sistema donde se puede agregar pacientes, medicinas y llevar un registro de qué medicina se le da al paciente, cualquier hospital se puede registrar.", 
+    images:[(await import('@/assets/projectsimg/hospital/principal.jpg')).default,
+        (await import('@/assets/projectsimg/hospital/pacientes.jpg')).default,
+        (await import('@/assets/projectsimg/hospital/medicinas.jpg')).default,
+        (await import('@/assets/projectsimg/hospital/registro.jpg')).default,
+        ],
+        githubhref: "https://github.com/Joaco19975/Registros-medicos-pacientes", 
   }
 
   ];
@@ -139,8 +142,6 @@ onMounted(() => {
             </div>
            </div>
 
-
-          
           <p>{{ project.description }}</p>
           <a :href="project.githubhref" target="_blank"><font-awesome-icon icon="fa-brands fa-github" /> Repositorio</a> <br>
           <a v-if="project.url" :href="project.href" target="_blank">Visitar sitio web</a><br>
