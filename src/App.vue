@@ -55,17 +55,17 @@ const loadProjects = async () => {
 
   ];
 
-  console.log("projectData", projectData);
+  //console.log("projectData", projectData);
 
-  for (const project of projectData) {
-    if (Array.isArray(project.images)) {
-      for (const image of project.images) {
-        console.log("Image", image);
+    /*for (const project of projectData) {
+      if (Array.isArray(project.images)) {
+        for (const image of project.images) {
+          console.log("Image", image);
+        }
+      } else {
+        console.log("Single Image", project.images);
       }
-    } else {
-      console.log("Single Image", project.images);
-    }
-  }
+    }*/
   
   projects.value = projectData;
 
@@ -304,13 +304,72 @@ a:hover{
 .blinking-brackets {
   font-size: 30px; /* Tamaño de fuente opcional para los corchetes */
   margin-top: 30px !important;
-
-
 }
 
 .opening-bracket,
 .closing-bracket {
   animation: blink 1s infinite;
+}
+
+
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .skill-image {
+  width: 70px; /* Ajusta el tamaño de la imagen */
+  height: 70px;
+  border-radius: 80%;
+  margin-top: 90px;
+}
+  .blinking-brackets {
+    font-size: 24px; /* Decrease the font size for smaller screens */
+  }
+  .center-content p {
+    font-size: 14px; /* Ajusta el tamaño de fuente en párrafos en dispositivos móviles */
+    margin-top: 10px; /* Ajusta el margen superior en dispositivos móviles */
+  }
+
+  .about-me {
+    text-align: center; /* Alinea el texto a la izquierda en dispositivos móviles */
+  }
+
+  .skills {
+    margin-top: 24px; /* Ajusta el margen superior en dispositivos móviles */
+  }
+
+  .skill-name {
+    font-size: 10px; /* Ajusta el tamaño de fuente en nombres de habilidades en dispositivos móviles */
+  }
+
+  .projects {
+    margin-top: 20px; /* Ajusta el margen superior en dispositivos móviles */
+  }
+
+  .project-item {
+    max-width: 100%; /* Ancho completo en dispositivos móviles */
+  }
+
+  .projects h2 {
+    font-size: 16px; /* Ajusta el tamaño de fuente en títulos de proyectos en dispositivos móviles */
+  }
+
+  .project-image {
+    max-width: 70%; /* Ancho completo en dispositivos móviles */
+    max-height: auto; /* Ajusta la altura automáticamente en dispositivos móviles */
+    border-radius: 8px;
+  }
+  /* Adjust contact icon size */
+  .contacts a.contact-link {
+    font-size: 24px; /* Decrease the font size of contact icons */
+  }
+
+  .contacts {
+    margin-top: 20px; /* Ajusta el margen superior en dispositivos móviles */
+  }
+
+  .contact-link {
+    font-size: 20px; /* Ajusta el tamaño de fuente de los íconos de contacto en dispositivos móviles */
+  }
 }
 
 @keyframes blink {

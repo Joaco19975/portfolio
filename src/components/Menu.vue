@@ -99,10 +99,10 @@ const collapsed = ref(true);
 @media (max-width: 768px) {
     /* Estilos para dispositivos móviles */
     .collapsed {
-        width: 20px; /* Reduce el ancho del menú en dispositivos móviles */
+        width: 24px; /* Reduce el ancho del menú en dispositivos móviles */
     }
     .menu-button {
-        font-size: 8px; /* Reduce el tamaño del icono del menú en dispositivos móviles */
+        font-size: 10px; /* Reduce el tamaño del icono del menú en dispositivos móviles */
     }
 }
 
