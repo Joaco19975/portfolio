@@ -39,7 +39,7 @@ const loadProjects = async () => {
   const projectData = [
   {
     title: 'Sistema de gestión de cine', 
-    description: "Sistema de gestión de cine para la compra de entradas online del lado del cliente, y la administración del lado del Administrador. (Arreglando errores de seguridad en producción)" , 
+    description: "Proyecto para la materia Práctica profesional supervisada.Gestión de cine para la compra de entradas online del lado del cliente, y la administración del lado del Administrador. (Arreglando errores de seguridad en producción)" , 
     images:[await import('@/assets/projectsimg/cine.jpg').then((m) => m.default)], 
     manual:true,  manualLink: (await import('@/assets/manual-usuario/Manual-Usuario-Cine.pdf')).default,
     url:true ,
