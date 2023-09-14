@@ -2,6 +2,37 @@
 import Menu from './components/Menu.vue';
 import { ref, onMounted } from 'vue';
 
+const isDragging = ref(false);
+const dragStartX = ref(0);
+const dragStartY = ref(0);
+const dragOffsetX = ref(0);
+const dragOffsetY = ref(0);
+
+const startDrag = (event) => {
+  isDragging.value = true;
+  dragStartX.value = event.clientX;
+  dragStartY.value = event.clientY;
+};
+
+const handleDrag = (event) => {
+  if (isDragging.value) {
+    const offsetX = event.clientX - dragStartX.value;
+    const offsetY = event.clientY - dragStartY.value;
+
+    // Aplica la transformación CSS para mover la imagen
+    dragOffsetX.value = offsetX;
+    dragOffsetY.value = offsetY;
+  }
+};
+
+const endDrag = () => {
+  isDragging.value = false;
+  dragOffsetX.value = 0;
+  dragOffsetY.value = 0;
+};
+
+
+
 const skills = ref([]);
 
 const loadSkills = async () => {
@@ -91,6 +122,7 @@ onMounted(() => {
 
 </script>
 <template>
+  
    <Menu />
   <div class="center-content">
       <!-- Aquí colocas tu contenido central -->
@@ -125,27 +157,48 @@ onMounted(() => {
 
       </div>
 
-      <div class="projects" id="projects">
+      <div class="projects " id="projects">
         <h2>Proyectos</h2>
-        <div class="projects-container">
+        <p>En esta sección encontrarás una selección de mis proyectos. Algunos de ellos están en desarrollo y todavía no están terminados, pero estoy trabajando en ellos constantemente.</p>
+        <div class="projects-container " >
           <div v-for="(project, index) in projects" :key="project.title" class="project-item">
             <div>
-            <!-- Si es un array de imágenes, muestra el carrusel -->
-            <h3>{{ project.title }}</h3>
-            <img v-if="Array.isArray(project.images) && project.images.length > 1" :src="project.images[currentImageIndex[index]]" :alt="project.title" class="project-image" />
-            <!-- Si es una única imagen, muestra la imagen -->
-            <img v-else :src="project.images[0]" :alt="project.title" class="project-image" />
-            <!-- Agrega la navegación solo si es un carrusel -->
-            <div v-if="Array.isArray(project.images) && project.images.length > 1" class="image-navigation">
-              <button @click="prevImage(index)" class="navigation-button">Anterior</button>
-              <button @click="nextImage(index)" class="navigation-button">Siguiente</button>
-            </div>
-           </div>
+              <!-- Si es un array de imágenes, muestra el carrusel -->
+                <h3>{{ project.title }}</h3>
+                <div  class="zoom-on-hover">
+                <img  v-if="Array.isArray(project.images) && project.images.length > 1" 
+                :src="project.images[currentImageIndex[index]]" 
+                :alt="project.title" 
+                class="project-image"
+                :style="{ '--drag-offset-x': `${dragOffsetX}px`, '--drag-offset-y': `${dragOffsetY}px` }"
+                  @mousedown="startDrag"
+                  @mousemove="handleDrag"
+                  @mouseup="endDrag"
+                  @mouseleave="endDrag"
+                
+                />
 
-          <p>{{ project.description }}</p>
-          <a :href="project.githubhref" target="_blank"><font-awesome-icon icon="fa-brands fa-github" /> Repositorio</a> <br>
-          <a v-if="project.url" :href="project.href" target="_blank">Visitar sitio web</a><br>
-          <a v-if="project.manual" :href="project.manualLink" download>Descargar manual de usuario</a><br>
+                <!-- Si es una única imagen, muestra la imagen -->
+                <img v-else :src="project.images[0]" :alt="project.title" class="project-image"
+                    :style="{ '--drag-offset-x': `${dragOffsetX}px`, '--drag-offset-y': `${dragOffsetY}px` }"
+                      @mousedown="startDrag"
+                      @mousemove="handleDrag"
+                      @mouseup="endDrag"
+                      @mouseleave="endDrag"
+                
+                />
+              </div>
+              <!-- Agrega la navegación solo si es un carrusel -->
+              <div v-if="Array.isArray(project.images) && project.images.length > 1" class="image-navigation">
+                <button @click="prevImage(index)" class="navigation-button">Anterior</button>
+                <button @click="nextImage(index)" class="navigation-button">Siguiente</button>
+              </div>
+            </div>
+
+            <p>{{ project.description }}</p>
+            <a :href="project.githubhref" target="_blank"><font-awesome-icon icon="fa-brands fa-github" /> Repositorio</a> <br>
+            <a v-if="project.url" :href="project.href" target="_blank">Visitar sitio web</a><br>
+            <a v-if="project.manual" :href="project.manualLink" download>Descargar manual de usuario</a><br>
           
         </div>
 
@@ -175,6 +228,27 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+.zoom-on-hover {
+  overflow: hidden;
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.zoom-on-hover img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+
+.zoom-on-hover:hover img {
+  transform: scale(1.2) translate(var(--drag-offset-x, 0px), var(--drag-offset-y, 0px));
+}
+
+
 a {
   color:black;
 }
