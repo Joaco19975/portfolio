@@ -1,5 +1,5 @@
 import profileImage from '@/assets/img/progra.jpg';
-import curriculumPDF from '../assets/cv/Joaquinparadela.pdf'; // Ruta relativa directa
+import curriculumPDF from '../assets/cv/Joaquin_Paradela_fullstack_3.pdf'; // Ruta relativa directa
 export default {
     profile: {
         name: 'Joaquin Paradela',
@@ -53,7 +53,7 @@ export default {
             onClick(){
                 const link = document.createElement('a');
                 link.href = curriculumPDF;
-                link.download = 'Joaquin_Paradela_fullstack_3.pdf'; // Nombre del archivo que se descargará
+                link.download = 'Joaquin_Paradela_fullstack_3'; // Nombre del archivo que se descargará
                 link.target = '_blank';
                 link.click();
             }
