@@ -76,6 +76,7 @@ const loadProjects = async () => {
     url:true ,
     href:"https://gestor-de-cine-production.up.railway.app/",   
     githubhref: "https://github.com/Joaco19975/gestor-de-cine",
+    documentation:[(await import ('@/assets/documentation/Sistema_de_Gestion_de_Cine.pdf')).default],
  },
   {
     title: 'Sistema de gestion de hospital', description: "Sistema donde se puede agregar pacientes, medicinas y llevar un registro de qué medicina se le da al paciente, cualquier hospital se puede registrar.", 
@@ -199,6 +200,7 @@ onMounted(() => {
             <a :href="project.githubhref" target="_blank"><font-awesome-icon icon="fa-brands fa-github" /> Repositorio</a> <br>
             <a v-if="project.url" :href="project.href" target="_blank">Visitar sitio web</a><br>
             <a v-if="project.manual" :href="project.manualLink" download>Descargar manual de usuario</a><br>
+            <a v-if="project.documentation" :href="project.documentation" download>Descargar documentación completa</a><br>
           
         </div>
 

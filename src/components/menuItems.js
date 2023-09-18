@@ -53,7 +53,7 @@ export default {
             onClick(){
                 const link = document.createElement('a');
                 link.href = curriculumPDF;
-                link.download = 'Joaquinparadela.pdf'; // Nombre del archivo que se descargará
+                link.download = 'Joaquin_Paradela_fullstack_3.pdf'; // Nombre del archivo que se descargará
                 link.target = '_blank';
                 link.click();
             }
